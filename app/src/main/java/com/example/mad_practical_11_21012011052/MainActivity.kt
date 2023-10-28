@@ -2,7 +2,7 @@ package com.example.mad_practical_11_21012011052
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ListView
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -46,8 +46,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
     private fun getPersonDetailsFromJson(sJson: String) {
         val personList = ArrayList<Person>()
         try {
@@ -57,9 +55,10 @@ class MainActivity : AppCompatActivity() {
                 val person = Person(jsonObject)
                 personList.add(person)
             }
-            val Personlistview = findViewById<ListView>(R.id.Listview1)
+            val Personlistview = findViewById<RecyclerView>(R.id.Listview1)
             Personlistview.adapter = PersonAdapter(this, personList)
-        } catch (ee: JSONException) {
+        }
+        catch (ee: JSONException) {
             ee.printStackTrace()
         }
     }
